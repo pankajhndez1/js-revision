@@ -826,3 +826,157 @@ console.log(myObjStat.name);
 console.log(MyStaticMethodClass.disp(1,2));
 
 
+// document.alert("huii"+<h1>dfegf</h1> +'sfs')
+
+
+var myvar = prompt("enter the day : ");
+var ax= myvar.toLowerCase();
+console.log(ax,'ax');
+switch (ax) {
+    case "mon":
+        console.log("today is monday !!")
+        break;
+
+    case "tue":
+        console.log("today is Tue !!")
+        break
+   
+   
+    case "wed":                            
+    case "thurs":                              
+    case "fri":
+    case "sat":
+    case "sun":
+        console.log("today is Tue !!")
+        break;
+
+    default:
+        console.log("i don't know much !!")
+        break;
+}
+
+let jklObj={
+    name1 :'pankaj',
+}
+
+console.log( jklObj["name1"]);
+
+
+function add(num1, num2) {                
+    console.log( arguments[0] );   
+ }
+ 
+ 
+ 
+ add(10, 20);   
+
+ function argumentObjectCheck(a,b,...args) {
+   console.log(  arguments[0]);
+   console.log(arguments[3]);
+ }
+
+ argumentObjectCheck(10,20,[25])
+
+ const arrFunc =(a)=>a;
+ console.log( arrFunc(10));
+
+ const arrFunc1 =(a)=>{return a};
+ console.log(arrFunc1(2));
+
+ const arrFunc2 =(a,b)=>{
+    return(
+        a+b
+    )
+ }
+
+ console.log(arrFunc2(5,6));
+
+  const arrFunc3 =()=>{
+    return (
+        "hii"
+    )
+};
+ console.log(arrFunc3());
+
+ //IIfe
+ const myIife =(function (a,b) {
+    return(a+b)
+ })(10,20);
+ console.log(myIife);
+
+
+// revise :
+
+
+var axs=15;
+var axs=25;
+axs=56
+console.log(axs); 
+
+function xFunc() {
+    let xFuncVar = 25;
+    console.log(xFuncVar);
+}
+xFunc();
+// console.log(xFuncVar, 'xFuncVar');
+
+
+function meyFunc() {
+    console.log("i am a method !!");
+}
+
+console.log(meyFunc);
+console.log(typeof(meyFunc));
+
+let myOebj ={
+    name :'pankaj'
+}
+
+myOebj.name='rahul'
+console.log(myOebj.name);
+myOebj["roll"]=120;
+console.log(myOebj);
+
+
+var myclassx=function (mobilename,mobileram,mobilechip) {
+    //  console.log(" the constructor get called !!");
+      this.name = mobilename,
+      this.ram = mobileram,
+      this.chipname = mobilechip
+      this.myMethods = function () {
+          console.log(" i am method inside Mobile constructor !!");
+      }
+  }
+  
+  
+  
+//   #  now creating the object of the class (myclass)  :
+  
+  
+  var myVarr= new myclassx('lg','5gb')
+
+  console.log(myVarr);
+
+
+//   the protoype function check
+
+
+const myProFunc =function () {
+    this.name ='raja ki jai ho';
+    this.myMethod =function () {
+        console.log( this.color,' color');
+    }
+}
+
+myProFunc.prototype.color ='red'
+myProFunc.prototype.xyMethod =function () {
+    console.log(this.name,'this.name');
+}
+let myProFuncObj=new myProFunc()
+let myProFuncObj2=new myProFunc()
+myProFuncObj.name='hihihi';
+console.log(myProFuncObj2.name);
+myProFuncObj.xyMethod();
+
+
+
