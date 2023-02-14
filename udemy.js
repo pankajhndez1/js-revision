@@ -193,3 +193,59 @@ console.log(myObj1.summary);
 //  so , we can somewhere also conclude that the arrays are object too and we can use  the methods of the array object .
 
 // Example : push ,pop , shift and unshift  .
+
+
+
+
+// note : important !!
+
+//  myArr3 =['pankaj',2566-669,{true?'hii':'hello'}]  
+
+// wrong by syntax 
+// reason :
+
+
+// const myArr3 =['pankaj',2566-669,{true?'hii':'hello'},], the third element of the array is an expression that uses a ternary operator to evaluate to either the string 'hii' or the string 'hello'. However, this expression is not a standalone value that can be stored in an array by itself.
+
+// To make it a valid element of the array, we need to make sure that the expression evaluates to a string (or any other data type that can be stored in an array), like this: 
+// const myArr3 =['pankaj',2566-669,(true?'hii':'hello')];   so , prefer the round brackets while writting the expression inside the array , ex : (true?'hii':'hello') !!
+
+
+
+
+
+
+//  looping through an array along with the continue and break statements :
+
+
+const myArr3 =['pankaj',2566-669,(true?'hii':'hello'), {name:'raj kappor' ,age:56}];
+
+const arrayToStoreType =[];
+
+for (let i = 0; i < myArr3.length; i++) {
+    console.log(myArr3[i], 'has the type :',typeof myArr3[i]);
+    let element = myArr3[i];
+    arrayToStoreType.push( typeof element)    
+}
+
+console.log(arrayToStoreType);
+
+
+//  example of break and continue :
+
+const myFunc =function () {
+    console.log('this is myFunc');
+}
+
+
+const myArr4 =['pankaj',45,['a','b','c'], {name :"raja ji" ,roll:56} ,myFunc];
+const arrayToHoldTypeExceptFunction =[];
+
+for (let i = 0; i < myArr4.length; i++) {
+    console.log(myArr4[i],typeof myArr4[i]);
+   (typeof myArr4[i] !='function'? arrayToHoldTypeExceptFunction.push(typeof myArr4[i]):null)
+}
+
+console.log(arrayToHoldTypeExceptFunction);  
+
+
