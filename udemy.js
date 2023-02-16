@@ -249,3 +249,15 @@ for (let i = 0; i < myArr4.length; i++) {
 console.log(arrayToHoldTypeExceptFunction);  
 
 
+//  while loop 
+
+let luckyNum=Math.floor(Math.random()*6+1);
+console.log(typeof luckyNum);
+
+while (luckyNum!=6) {
+    console.log('better luck next time',luckyNum);
+    luckyNum=Math.floor(Math.random()*6+1);
+    if (luckyNum===6) {
+        console.log(`it's a six`);
+    }
+}
