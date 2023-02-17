@@ -268,3 +268,53 @@ console.log(document.getElementById('geek').firstChild.nodeValue);
 console.log(document.getElementById('geek').firstChild.nextSibling.nodeName);
 console.log(document.getElementById('geek').firstChild.nextSibling.nodeType);
 console.log(document.getElementById('geek').firstChild.nextSibling.nodeValue);
+
+
+
+
+// Lecture : 21  Properties of Attribute Object in JavaScript  :
+
+
+//  so , in order to access the attribute and its value we do it like :
+
+//  using the  attributes property :
+
+console.log(document.getElementById("geek1"));
+//  the below code will be gicing us the attribute : 'id' 
+
+console.log(document.getElementById("geek1").attributes[0].nodeName);
+//  the below code will give u the attribute value !!
+console.log(document.getElementById("geek1").attributes[0].nodeValue);
+
+
+//  similarly we can access the other attribute too !! i.e class and its value :
+
+
+console.log(document.getElementById('geek1').attributes[1].nodeName);
+
+console.log(document.getElementById('geek1').attributes[1].nodeValue);
+
+
+
+//  also in order to access all the attributes we can use the attributes property !!
+
+
+//  but note that the nodeName and nodeValue is now deprecated and now more often people use the name and vakue property !!
+
+
+//  getting the node name 
+console.log(document.getElementById('geek1').attributes[0].name);
+
+
+//  getting the node value 
+console.log(document.getElementById('geek1').attributes[0].value);
+
+// assigning the value to something else :
+
+document.getElementById('geek1').attributes[0].value ='geeeeek111'
+
+
+//  due ot which the id value will get changed to something else !!
+
+
+// video : 22    Difference between Node of an Element and Element Node of an Element in JavaScript .
