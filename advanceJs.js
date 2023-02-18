@@ -369,3 +369,170 @@ console.log(document.getElementById('myId').parentElement);
 
 
 // 25. childNodes and children in JavaScript .
+
+
+//  children igonres the text node , white space , enter key and comments while childNodes property doesn't !! and also note that both returns the list of the elements .
+
+// accessing the childNodes inside the element which is having the id='idOne'
+
+console.log( document.getElementById('idOne').childNodes);
+
+//  using the below code we can access the element <h1 class="pkj"> h1 inside the div </h1> inside text !!
+
+console.log(document.getElementById('idOne').children[0].childNodes[0]);
+
+
+//  or we can use the property textContent too to get the text !!
+
+console.log(document.getElementById('idOne').children[0].textContent);
+
+
+
+//  we can also do the looping too in order to access the childNodes and children !!
+
+
+const myArr = document.getElementById('myBody').childNodes;
+
+for (let i = 0; i < myArr.length; i++) {
+    let element = myArr[i];
+    console.log(element);
+}
+
+
+
+// 26. firstChild and firstElementChild in JavaScript 
+
+//  firstChild considers the text ,comment , enter key ,spaces whereas the firstElementChild will only consider the element child .
+
+console.log(document.getElementById('myBody').childNodes);
+console.log(document.getElementById('myBody').firstChild);
+//  so we can say that childNodes is some where equivalent  to firstChild .
+
+
+console.log(document.getElementById('myBody').children);
+
+console.log(document.getElementById('myBody').firstElementChild);
+
+//  whereas  we can say that children is some where equivalent  to firstElementChild . Also we can use the textContent property to access the text inside them !! and  same goes with lastChild and lastElementChild and previousSibling and previousElementSibling .
+
+// ex :
+
+console.log(document.getElementById('myBody').firstElementChild.textContent);
+
+
+// 28. note that the previousSibling and previousElementSibling accesses the previous  Sibling of the element which can include the text, comment , enter key etc , and Also previousElementSibling does not include the text , comment and the enter key and only access the previous element sibling . Also , note in case the previous sibling is not present while accessing the previousElementSibling or previousSibling then in that case it will return null !!
+
+
+console.log(document.getElementById('myBody').firstChild.previousSibling);
+
+//  it will return null as the first child does not have the previous sibling .
+
+
+console.log(document.getElementById('idOne').lastElementChild.previousElementSibling);
+
+
+//29. nextSibling and nextElementSibling 
+
+// nextSibling : will consider the text , comment , enter key and tab !!
+
+console.log(document.getElementById('idOne').firstChild.nextSibling);
+
+// nextElementSibling : will consider the html elements !!
+
+console.log(document.getElementById('idOne').firstChild.nextSibling.nextElementSibling);
+
+// 30. How to Create Element Node in JavaScript
+
+
+//  creating an element node : 
+
+let nNode = document.createElement('h2');
+
+console.log(nNode);
+
+//  creating a new text node :
+
+let newTextNode  = document.createTextNode("hii there !!")
+
+console.log(newTextNode);
+
+//  creating a new comment node using createComment method :
+
+let newCommentNode = document.createComment('i am a comment !!')
+
+console.log(newCommentNode);
+
+
+//  creating the document fragment using the createDocumentFragment !!
+
+let theDOcFrag = document.createDocumentFragment();
+
+console.log(theDOcFrag);
+
+
+// 34. How to Append Element Node in JavaScript
+
+//  the appendChild(Child_Node) method can be used to append the html element  , comment node ,or text node easily . 
+//  append will always append to the last !! 
+
+// append existing element : so if append an exsisting element then it will move from its original position and will get inserted to the target element . 
+
+
+
+//  example :
+
+const myData = document.getElementById('idTwo').childNodes[1];
+
+console.log(myData);
+
+document.getElementById('idThree').appendChild(myData);
+
+console.log(document.getElementById('idThree'));
+
+
+
+//  creating and appending new h2 to div which is having idFour !!
+
+const myH2Data =document.createElement('h2');
+console.log(myH2Data);
+const myTextNode = document.createTextNode('this is h2 text');
+
+myH2Data.appendChild(myTextNode) 
+console.log(myH2Data);
+
+document.getElementById('idFour').appendChild(myH2Data)
+
+
+//  now appending a comment node at the same place , which will get added to the last !!
+const myCommentNode =document.createComment('i am small comment')
+
+document.getElementById('idFour').appendChild(myCommentNode);
+
+console.log(document.getElementById('idFour'));
+
+//  working with the document fragments So, note that once the document fragment along with its element gets inserted in the document tree , then the document fragment  becomes empty again !!
+
+//  first step is to create the document fragment :
+
+const myDocFrag =document.createDocumentFragment();
+
+
+console.log(myDocFrag);
+
+// now inserting the elements in this document fragment !!
+
+const myele =document.createElement('h1');
+
+myele.textContent ='this is the h1 for the doc fragment !!'
+
+console.log(myele);
+
+//  now inserting this h1 to the id ='docFrag';
+
+myDocFrag.appendChild(myele);
+
+document.getElementById('docFrag').appendChild(myDocFrag)
+
+// now after inserting the element in the document tree  the document fragment will again get empty !!
+
+console.log(myDocFrag);
