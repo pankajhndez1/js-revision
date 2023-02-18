@@ -277,30 +277,6 @@ console.log(document.getElementById('geek').firstChild.nextSibling.nodeValue);
 
 //  so , in order to access the attribute and its value we do it like :
 
-//  using the  attributes property :
-
-console.log(document.getElementById("geek1"));
-//  the below code will be gicing us the attribute : 'id' 
-
-console.log(document.getElementById("geek1").attributes[0].nodeName);
-//  the below code will give u the attribute value !!
-console.log(document.getElementById("geek1").attributes[0].nodeValue);
-
-
-//  similarly we can access the other attribute too !! i.e class and its value :
-
-
-console.log(document.getElementById('geek1').attributes[1].nodeName);
-
-console.log(document.getElementById('geek1').attributes[1].nodeValue);
-
-
-
-//  also in order to access all the attributes we can use the attributes property !!
-
-
-//  but note that the nodeName and nodeValue is now deprecated and now more often people use the name and vakue property !!
-
 
 //  getting the node name 
 console.log(document.getElementById('geek1').attributes[0].name);
@@ -318,3 +294,78 @@ document.getElementById('geek1').attributes[0].value ='geeeeek111'
 
 
 // video : 22    Difference between Node of an Element and Element Node of an Element in JavaScript .
+
+
+//  note : that while making the document tree starting from the document , then the enter , space and tab also gets counted !! and these three things create the node in document tree , which we usually call as text node .
+
+
+//  which mean if we check the nodeName of a enter  key then it will provide the name as the text node .
+
+
+//  some example of the element Node are  : html , head, body,h1 and p tag !!  this is known as the Element Node of an Element .
+
+//  so , we can conclude that  except the Element node of an Element all we have is the Node of an element which includes the enter , space ,text ,tab etc and on checking the nodeName of the Node enter , space ,text ,tab etc , it will usually return us text node !!
+
+
+//The nodeName of the comment node would be "#comment".!!
+
+
+
+//  23 . DOM Traversal in JavaScript .
+
+// * parentNode : it will return the parent node .  Which includes Node of an Element, which consist of enter , tab , comment , text etc .
+
+// * parentElement : it will return the parent element node . Which includes the Element Node of an Element in JavaScript .
+
+// • parentNode – Returns parent node
+
+// • parentElement – Returns parent element node
+
+// • childNodes – Returns collection of an element’s child nodes (including text and comment nodes)
+
+// • children – Returns a collection of an element’s child element node (do not include text and comment  nodes)
+
+
+// • firstChild – Returns first child node of an element (it can be text or comment node)
+
+// • firstElementChild – Returns first child element node of an element
+
+// • lastChild - Returns last child node of an element (it can be text or comment node)
+
+// • lastElementChild – Returns last child element node of an element
+
+// • previousSibling - Returns previous node of same level (it can be text or comment node)
+
+// • previousElementSibling – Returns previous element node of same level
+
+// • nextSibling - Returns next node of same level (it can be text or comment node)
+
+// • nextElementSibling – Returns next element of same level
+
+
+
+// 24.  parentNode and parentElement in JavaScript .
+
+
+// The parentNode read-only property returns the parent of the specified node in the DOM tree.
+// The parentElement property returns the parent element of the specified element. If the parent node is not an element node, it returns null. 
+
+
+// parentNode will return the node no matter what , but in case of accessing the parentElement the parent element should be there !! for example :
+
+
+console.log(document.getElementById('myId').parentNode);
+
+//  o/p will give document !!
+
+console.log(document.getElementById('myId').parentElement);
+
+//  o/p will return null as the html does not have the parent element but do have the parentNode i.e document.
+//  so the parentNode should be an element in order not to return null.
+
+
+//  so , the parentNode will return the parent element no matter if it's an element or not , but in case of parentElement it should be an element ,i.e parent should be an element , otherwise it will return us the null.
+
+
+
+// 25. childNodes and children in JavaScript .
