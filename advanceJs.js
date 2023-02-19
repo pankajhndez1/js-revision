@@ -536,3 +536,56 @@ document.getElementById('docFrag').appendChild(myDocFrag)
 // now after inserting the element in the document tree  the document fragment will again get empty !!
 
 console.log(myDocFrag);
+
+
+// 40. When you use the "normalize" method on a node in the DOM tree, it will traverse the subtree of the given node and merge any adjacent text nodes that it finds into a single node. This can be useful for cleaning up the DOM tree and simplifying the structure.
+
+// For example, if you have a DOM tree like this:
+
+
+{/*
+
+ <div>
+  Some text
+  <span>More text</span>
+  <br>
+  Even more text
+</div>
+
+*/}
+
+
+// and you call the "normalize" method on the "div" element, the resulting DOM tree will look like this:
+
+
+// <div>
+//   Some textMore text
+//   <br>
+//   Even more text
+// </div>
+
+
+// As you can see, the "normalize" method has merged the two adjacent text nodes into a single node.
+
+// However, it is important to note that the "normalize" method does not remove any nodes from the DOM tree, and it does not change the overall structure of the tree. It only merges adjacent text nodes into a single node, which can simplify the structure and make it easier to work with.
+
+const myelem=document.createElement('h1');
+const myDatas =document.createTextNode('hehe ');
+const myEmptyData =document.createTextNode(' ');
+const myelem2=document.createElement('h2');
+const myDatas2 =document.createTextNode(' hahahaha ');
+myelem.appendChild(myDatas);
+myelem2.appendChild(myDatas2);
+
+document.getElementById('normalizeMeth').append(myelem)
+document.getElementById('normalizeMeth').append(myelem2)
+document.getElementById('normalizeMeth').append(myEmptyData)
+console.log(document.getElementById('normalizeMeth').childNodes);
+
+document.getElementById('normalizeMeth').normalize();
+//  after normalizing the no. of childNodes :
+console.log(document.getElementById('normalizeMeth').childNodes);
+console.log(document.getElementById('normalizeMeth'));
+
+
+//  see normalize again !!
