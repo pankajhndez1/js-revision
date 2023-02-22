@@ -119,3 +119,5 @@ document.querySelector('.myClass').addEventListener('click', function () {
 //  do note : important !!
 
 //  do note that we always gets a string from the input field !! Also the query selector method also accepts the elements of the html too !! example : document.querSelector('body') , which will give u the access of the whole body tag !! 
+
+//  Also we can change the color of the body using the properties too , example : document.querSelector('body').style.backgroundColor = '#60b347'
