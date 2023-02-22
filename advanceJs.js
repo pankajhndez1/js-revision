@@ -34,7 +34,7 @@ console.log(specificClasses, 'specificClasses');
 //  video :11  : getElementsByClassName More Specific Method in JavaScript 
 
 const myElements = document.getElementById("idOne")
-const pkjClassNameEle =myElements.getElementsByClassName("pkj")
+const pkjClassNameEle = myElements.getElementsByClassName("pkj")
 //  above only the elements with the pkj class  inside "idOne" will get returned 
 console.log(pkjClassNameEle);
 
@@ -56,7 +56,7 @@ console.log(pkjClassNameEle);
 
 //  element selector : 
 
-const  eleOcc = document.querySelector('p');
+const eleOcc = document.querySelector('p');
 //  the above code will return the first occurence of the p tag from our code :
 console.log(eleOcc);
 
@@ -64,7 +64,7 @@ console.log(eleOcc);
 
 // below which ever occurs first i.e either 'p' or 'h1' will get returned by the code :
 
-const  getTheFirstOccurenceOfTheSpecifiedELe = document.querySelector('p,h1');
+const getTheFirstOccurenceOfTheSpecifiedELe = document.querySelector('p,h1');
 console.log(getTheFirstOccurenceOfTheSpecifiedELe);
 
 
@@ -72,13 +72,13 @@ console.log(getTheFirstOccurenceOfTheSpecifiedELe);
 
 const getIdUsingQuerySelector = document.getElementById('#geek');
 
-console.log(getIdUsingQuerySelector,'getIdUsingQuerySelector');
+console.log(getIdUsingQuerySelector, 'getIdUsingQuerySelector');
 
 // below which ever occurs first i.e either '#geek ' or '#geek1' will get returned by the code
 
 const getFirstIdUsingQuerySelector = document.getElementById('#geek , #geek1');
 
-console.log(getFirstIdUsingQuerySelector,'getFirstIdUsingQuerySelector');
+console.log(getFirstIdUsingQuerySelector, 'getFirstIdUsingQuerySelector');
 
 
 
@@ -105,22 +105,22 @@ console.log(result1);
 
 // combined selctor i.e for the id , class ,and elements !!
 
-const  myResult =  document.querySelectorAll('h1 ,p ,#geek ,.color');
+const myResult = document.querySelectorAll('h1 ,p ,#geek ,.color');
 
-console.log(myResult,'myResult');
+console.log(myResult, 'myResult');
 
 
 //  id selector 
 
 const results1 = document.querySelectorAll('#geek');
 
-console.log(results1,'results1');
+console.log(results1, 'results1');
 
 //  now giving the multiple Ids :
 
-const result2 =document.querySelectorAll("#geek ,#geek1 ,#idOne");
+const result2 = document.querySelectorAll("#geek ,#geek1 ,#idOne");
 
-console.log(result2,'result2');
+console.log(result2, 'result2');
 
 
 //  class selctors :
@@ -128,11 +128,11 @@ console.log(result2,'result2');
 
 const result3 = document.querySelectorAll('.color ');
 
-console.log(result3,'result3');
+console.log(result3, 'result3');
 
 
 const result4 = document.querySelectorAll('.geek,.color');
-console.log(result4,'result4');
+console.log(result4, 'result4');
 
 
 //  attribute selector ( imp !! )
@@ -148,11 +148,11 @@ const result5 = document.querySelectorAll('div[id]')
 //  we can also specify the particular id attribute's value in order to access the particular element .
 
 
-const result6 = document .querySelectorAll('div[id="idOne"]')
+const result6 = document.querySelectorAll('div[id="idOne"]')
 
 //  so , only that div will get returned here which is having the attribute's value equals to the idOne .
 
-console.log(result6,'result6');
+console.log(result6, 'result6');
 
 
 // it's worth noting that querySelectorAll returns a NodeList object which is an array-like object that contains all the selected elements. So, it's necessary to iterate over this object using a loop or other methods to access each element.
@@ -167,12 +167,12 @@ console.log(result6,'result6');
 
 
 
-const result7 =document.getElementById("idOne").querySelectorAll('h1.pkj');
+const result7 = document.getElementById("idOne").querySelectorAll('h1.pkj');
 //  o/p will be the h1 with the class name of pkj .
 
 //  also note that the searching will be done only inside the id ='idOne';
 
-console.log(result7,'result7');
+console.log(result7, 'result7');
 
 
 
@@ -187,7 +187,7 @@ const result8 = document.querySelectorAll('#show >.geek>span.myspan')
 // first it will iterate the element with id show and then it will look for the child element which is having the class geek and then it will again look for its child element (span) having the class of myspan;
 
 
-console.log(result8,'result8');
+console.log(result8, 'result8');
 
 
 // 17 .querySelectorAll Method with Loop in JavaScript . As it returns a  list of all the elements .
@@ -196,10 +196,10 @@ console.log(result8,'result8');
 //  calculating the length :
 
 
- const myLenData = document.querySelectorAll('.geek');
+const myLenData = document.querySelectorAll('.geek');
 
- console.log(myLenData.length ,'is the length');
- console.log(myLenData);
+console.log(myLenData.length, 'is the length');
+console.log(myLenData);
 
 
 //  18.  looping using for loop .
@@ -257,7 +257,7 @@ console.log(document.getElementById('geek').firstChild.nodeValue);
 
 //  example :
 
-document.getElementById('geek').firstChild.nodeValue ='this is the new text !!';
+document.getElementById('geek').firstChild.nodeValue = 'this is the new text !!';
 
 console.log(document.getElementById('geek').firstChild.nodeValue);
 
@@ -287,7 +287,7 @@ console.log(document.getElementById('geek1').attributes[0].value);
 
 // assigning the value to something else :
 
-document.getElementById('geek1').attributes[0].value ='geeeeek111'
+document.getElementById('geek1').attributes[0].value = 'geeeeek111'
 
 
 //  due ot which the id value will get changed to something else !!
@@ -375,7 +375,7 @@ console.log(document.getElementById('myId').parentElement);
 
 // accessing the childNodes inside the element which is having the id='idOne'
 
-console.log( document.getElementById('idOne').childNodes);
+console.log(document.getElementById('idOne').childNodes);
 
 //  using the below code we can access the element <h1 class="pkj"> h1 inside the div </h1> inside text !!
 
@@ -452,7 +452,7 @@ console.log(nNode);
 
 //  creating a new text node :
 
-let newTextNode  = document.createTextNode("hii there !!")
+let newTextNode = document.createTextNode("hii there !!")
 
 console.log(newTextNode);
 
@@ -493,18 +493,18 @@ console.log(document.getElementById('idThree'));
 
 //  creating and appending new h2 to div which is having idFour !!
 
-const myH2Data =document.createElement('h2');
+const myH2Data = document.createElement('h2');
 console.log(myH2Data);
 const myTextNode = document.createTextNode('this is h2 text');
 
-myH2Data.appendChild(myTextNode) 
+myH2Data.appendChild(myTextNode)
 console.log(myH2Data);
 
 document.getElementById('idFour').appendChild(myH2Data)
 
 
 //  now appending a comment node at the same place , which will get added to the last !!
-const myCommentNode =document.createComment('i am small comment')
+const myCommentNode = document.createComment('i am small comment')
 
 document.getElementById('idFour').appendChild(myCommentNode);
 
@@ -514,16 +514,16 @@ console.log(document.getElementById('idFour'));
 
 //  first step is to create the document fragment :
 
-const myDocFrag =document.createDocumentFragment();
+const myDocFrag = document.createDocumentFragment();
 
 
 console.log(myDocFrag);
 
 // now inserting the elements in this document fragment !!
 
-const myele =document.createElement('h1');
+const myele = document.createElement('h1');
 
-myele.textContent ='this is the h1 for the doc fragment !!'
+myele.textContent = 'this is the h1 for the doc fragment !!'
 
 console.log(myele);
 
@@ -569,23 +569,139 @@ console.log(myDocFrag);
 
 // However, it is important to note that the "normalize" method does not remove any nodes from the DOM tree, and it does not change the overall structure of the tree. It only merges adjacent text nodes into a single node, which can simplify the structure and make it easier to work with.
 
-const myelem=document.createElement('h1');
-const myDatas =document.createTextNode('hehe ');
-const myEmptyData =document.createTextNode(' ');
-const myelem2=document.createElement('h2');
-const myDatas2 =document.createTextNode(' hahahaha ');
-myelem.appendChild(myDatas);
-myelem2.appendChild(myDatas2);
 
-document.getElementById('normalizeMeth').append(myelem)
-document.getElementById('normalizeMeth').append(myelem2)
-document.getElementById('normalizeMeth').append(myEmptyData)
+const myDatas = document.createTextNode('hehe ');
+
+const myDatas2 = document.createTextNode(' hahahaha ');
+
+document.getElementById('normalizeMeth').appendChild(myDatas)
+
+document.getElementById('normalizeMeth').appendChild(myDatas2)
+
 console.log(document.getElementById('normalizeMeth').childNodes);
 
 document.getElementById('normalizeMeth').normalize();
-//  after normalizing the no. of childNodes :
+//  after normalizing the no. of childNodes will get reduced !! :
+
 console.log(document.getElementById('normalizeMeth').childNodes);
-console.log(document.getElementById('normalizeMeth'));
+
+// 41 . insertBefore Method in JavaScript 
 
 
-//  see normalize again !!
+//  synatx : parentNode.insertBefore(newNode,refrenceNode );
+
+//  if the refrenceNode is ( not given /null )from our end then the node will get inserted at the end of the parentNode.
+
+//  note : that the refrence node can be text , comment , enter key or any other element too !!
+
+//  note : if the the newNode is an exsisting element in the html , then it will move from its original position , and gets inserted before the refrenceNode .
+
+
+//  also note that the parentNode will be the one where the we want to insert the element . 
+
+const myParentNode = document.getElementById('parent');
+
+const myNewLi = document.createElement('li');
+myNewLi.textContent = 'this is the new list item ';
+
+console.log(myNewLi);
+
+myParentNode.insertBefore(myNewLi, document.getElementById('insertBeforeThis'))
+
+
+// 42.  insertAdjacentElement Method !!
+
+//  syntax : targetElement.insertAdjacentElement('psoition',element);
+
+// position : beforebegin ,afterbegin, beforeend,afterend .
+const myParentNodew = document.getElementById('insertAjcntEle');
+
+// element p :
+
+const myPtext = document.createElement('p'); myPtext.textContent = 'hiii there !!';
+
+console.log(myPtext);
+myParentNodew.insertAdjacentElement("afterbegin", myPtext);
+
+//  note : important !!
+// 43. insertAdjacentHTML : this method doesn't move the html's tag , instead it copies the tag wherever the tags are inserted !! SO, due to which we can have the multiple tags !!
+
+const AjcntEl = document.getElementById('insertAjcntHtml');
+
+const myNewHtmlTag = " <span> this is span</span>"
+
+
+AjcntEl.insertAdjacentHTML("afterbegin", myNewHtmlTag)
+AjcntEl.insertAdjacentHTML("beforeend", myNewHtmlTag);
+
+//  which shows that the html tags are now copied at the required places !!
+
+// 44. insertAdjacentText Method .
+
+const myTxt = 'hey there i am panakaj  kumar a senior software engineer !!';
+
+const myTarget = document.getElementById('iamElemH2');
+
+myTarget.insertAdjacentText("beforebegin", myTxt);
+
+
+//  same as the insertAdjacentHTML the insertAdjacentText copies the text wherever required !!
+
+// 45. innerHTML : we can insert the markup here !!
+
+
+const myData2 = document.getElementById('myData');
+
+console.log(myData2.innerHTML);
+
+myData2.innerHTML = '<li>hey there</li>';
+
+// the above code will replace all the li with the li mentioned above !!
+
+
+// 46. outerHtml 
+
+
+const myData3 = document.getElementById('outerData');
+
+myData3.outerHTML = '<span>hiiii there i am a software engineer !!</span>';
+
+
+//  so , the outerHtml will include the element which we are getting using getElementById !!
+
+
+// 46. innerText : only either accepts or returns the text which means while displaying the innerText it won't be showing us the html tags !! also inserting the html using innerText won't work properly and it will display the html tags as it is !!
+
+const myInnerTextData =document.getElementById('innerText');
+//  the below console.log() won't be shoing you the html tags !!
+
+console.log(myInnerTextData.innerText);
+myInnerTextData.innerText='inner text data !!'
+
+
+// 49.  copying the node in js !!
+
+//  cloneNode : will copy the whole node !!
+
+const myNode = document.getElementById('copyNode');
+
+//  now copying the node :
+
+const copiedNode = myNode.cloneNode(myNode);
+
+myNode.appendChild(copiedNode);
+
+console.log(myNode);
+
+// 50. removeChild in js !!
+
+const removeChildParent = document.getElementById('removeChild') ;
+
+removeChildParent.removeChild(document.getElementById('removeChild').childNodes[1])
+
+//  note that the childNodes includes the text and comment nodes too !!
+
+
+// 51 .
+  
+
