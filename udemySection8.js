@@ -178,17 +178,19 @@ function repeat(fn, n) {
 
 // JavaScript used to be a purely interpreted language, but modern JavaScript engine now uses a mix between compilation (whole code gets compiled at once ) and interpretation ( line by line code getting executed ) which is called just-in-time compilation.
 
-// Just-in-time compilation compiles the entire code into machine code at once and then executes it right away.
+// Just-in-time compilation compiles the entire code into machine code at once and then executes it right away. 
+
+// Note :  many people still think that JavaScript is an interpreted language but that's not really true anymore. So instead of simple interpretation modern JavaScript engine now use a mix between compilation and interpretation which is called just-in-time compilation. This approach basically compiles the entire code into machine code at once and then executes it right away. So we still have the two steps of regular ahead of time compilation but there is no portable file to execute (like in case of the compilation where the code is then transferred to the binary file to get used !!).And the execution happens immediately after a compilation. And this is perfect for JavaScript as it's really a lot faster than just executing code line by line.
 
 // As a piece of JavaScript code enters the engine, the first step is to parse the code, which essentially means to read the code.
 
-// During the parsing process, the code is parsed into a data structure called the abstract syntax tree or AST.
+// During the parsing process, the code is parsed into a data structure called the ( abstract syntax tree ) or AST.
 
 // The resulting tree will later be used to generate the machine code.
 
 // The next step is compilation, which takes the AST and turns it into machine code.
 
-// This machine code is then executed in the call stack.
+// This machine code is then executed in the call stack of js engine .
 
 
 
@@ -211,3 +213,709 @@ function repeat(fn, n) {
 
 // The content of the execution context is generated in the creation phase right before execution. Once the top-level code execution is finished, functions start to execute, and the engine waits for callback functions to arrive.
 
+
+
+// note : const and let variables are block scoped. So they are valid.So they are available only inside the block in which they were created . Example : if block .
+
+
+//  Also , note that the var variable are the function scoped and they do not care about the block scope .
+
+
+function myFunc(name, birthYear) {
+  const myName = name;
+  const myAge = 2023 - birthYear;
+  function printAge() {
+    const myString = ` your birth year is :${birthYear} and the age is ${myAge} and house is ${house}`;
+    console.log(myString);
+    if (myAge < 30 && myAge > 25) {
+      console.log('you are between 25 and 30 !!');
+      var message = 'congratulations';
+    }
+    console.log(message, 'message1');
+    function myCar() {
+      console.log(`i have a car`);
+      console.log(message, 'message2');
+    }
+    myCar();
+  }
+  // the below message won't get printed as the message is declared with the var which means it has the function scope wherever it has been defined !!
+  // console.log(message, 'message2');
+  printAge();
+}
+const house =`#128/6 itbp campus`
+myFunc('pankaj',1996);
+const momName ='sarita devi';
+
+//  also do note that the function are also block scoped i.e they will only get called inside the scope in which it has been defined !!
+
+
+
+//  note note note : the scope chain is all about the order in which functions are written in the code.But what's really important to note here is that the scope chain has nothing to do with the order in which functions were called.Or in other words, the scope chain has nothing to dowith the order of the execution contexts in the call stack.The order of function calls is not relevantto the scope chain at all, all right?Really keep that in mind.
+
+
+// const a ='Jonas';
+
+// first();
+
+// function first() {
+//   const b='hello';
+//   second();
+//   function second() {
+//     const c='Hii';
+//     third();
+//   }
+// }
+
+// function third() {
+//   const d='hey';
+//   console.log(d+c+b+a);
+// }
+
+// output of teh above code : Uncaught ReferenceError: c is not defined !!
+
+
+// explain me why this is not working in very detailed version as i am totally a fresher and not able to get it ?
+
+
+
+/*
+
+The code you provided is not working because the variable c is defined inside the second() function and is not accessible outside of that function.
+
+To understand why this is happening, it's important to understand how JavaScript's scope works.
+
+JavaScript has function scope, which means that variables declared inside a function are only accessible within that function (and any nested functions). This is known as lexical scope.
+
+In the code you provided, the variable c is declared inside the second() function, which means it is only accessible within that function. When the third() function tries to access c, it cannot find it because c is not in its scope.
+
+Here is a breakdown of what happens when the code is executed:
+
+The variable a is assigned the value 'Jonas'.
+The first() function is called.
+Inside the first() function, the variable b is assigned the value 'hello'.
+The second() function is called.
+Inside the second() function, the variable c is assigned the value 'Hii'.
+The third() function is called.
+Inside the third() function, the variable d is assigned the value 'hey'.
+The console.log() statement tries to print out the values of d, c, b, and a. However, it cannot find the value of c because it is not in the scope of the third() function.
+To fix this issue, you could pass the value of c as an argument to the third() function, like this:
+
+
+
+
+const a ='Jonas';
+
+first();
+
+function first() {
+  const b='hello';
+  second();
+  function second() {
+    const c='Hii';
+    third(c);
+  }
+}
+
+function third(c) {
+  const d='hey';
+  console.log(d+c+b+a);
+}
+
+
+
+Now, when the third() function is called, it will receive the value of c as an argument, and it will be able to use it in its scope.
+
+
+
+
+Ques : and why is it so that third function is declared and initialized after it was called and why is that working ?
+
+
+
+
+
+The reason why the code is still working even though the third() function is declared and defined after it is called is because of how JavaScript works with function declarations and variable hoisting.
+
+JavaScript has a concept called hoisting, which means that variable and function declarations are moved to the top of their respective scopes by the JavaScript engine during the compilation phase. This means that even if a function is declared and defined after it is called, it can still be used as if it had been declared before the function call.
+
+In your code, when the JavaScript engine first parses the code, it recognizes that there are three function declarations: first(), second(), and third(). These functions are hoisted to the top of their respective scopes. This means that even though the third() function is defined after it is called inside the second() function, it can still be found and executed when the second() function calls it.
+
+However, it's important to note that only function declarations are hoisted in JavaScript. Function expressions, which are defined using a variable assignment, are not hoisted. So if you were to define the third() function using a variable assignment like this:
+
+
+
+
+const third = function() {
+  const d='hey';
+  console.log(d+c+b+a);
+}
+
+
+
+Then the code would not work as expected, because the third variable declaration would be hoisted to the top of its scope, but its value (which is the function expression) would not be defined until later in the code. This would result in an error when the second() function tries to call the third() function.
+
+
+
+
+Ques  : ok but only the function declaration moves to the top the program , isn't the decalration when moving to the top hold the undefined ?
+
+
+
+Yes, you are correct. When function declarations are hoisted to the top of their scope, they are actually initialized with the value undefined. This means that when the JavaScript engine encounters a function declaration during the compilation phase, it creates a variable with the same name as the function, and sets its value to undefined.
+
+For example, consider the following code:
+
+
+
+foo();
+
+function foo() {
+  console.log("Hello, world!");
+}
+
+
+
+When the JavaScript engine first parses this code, it recognizes the function declaration for foo(), and hoists it to the top of the global scope. At this point, foo is defined as a variable with the value undefined. Then, when the JavaScript engine executes the code, it encounters the foo() function call, and since foo has already been declared and initialized with the value undefined, the call to foo() is successful and the string "Hello, world!" is logged to the console.
+
+So, to summarize, when function declarations are hoisted to the top of their scope, they are initialized with the value undefined. This allows them to be called before they are defined in the code, as long as they are defined in the same scope.
+
+
+// more detailed version below :
+
+
+ Let me try to explain this in more detail.
+
+When a JavaScript file is executed, the JavaScript engine first goes through a process called compilation. During this process, the engine creates an abstract syntax tree (AST) of the code, and then generates machine code that can be executed by the computer.
+
+As part of this process, the JavaScript engine identifies function declarations in the code and hoists them to the top of their respective scope. What this means is that the engine essentially moves the function declaration to the top of its containing scope, so that it is available for use throughout the entire scope.
+
+Here is an example of a function declaration being hoisted to the top of its containing scope:
+
+
+
+
+
+foo();
+
+function foo() {
+  console.log("Hello, world!");
+}
+
+
+In this example, the function declaration for foo() is hoisted to the top of the global scope. This means that when the code is executed, the foo() function is already defined and can be called.
+
+However, when a function declaration is hoisted to the top of its scope, it is initialized with the value undefined. This is because the JavaScript engine needs to create a variable for the function in memory before it actually processes the function's code.
+
+Here is an example of a function declaration being initialized with the value undefined:
+
+
+console.log(foo); // logs 'undefined'
+
+foo();
+
+function foo() {
+  console.log("Hello, world!");
+}
+
+
+In this example, the console.log() statement logs undefined because the variable foo has been declared but has not yet been assigned a value. However, when the foo() function is called, it works as expected because the function declaration has already been hoisted to the top of the scope and is available for use.
+
+I hope this explanation helps to clarify the concept of hoisting in JavaScript. Please let me know if you have any further questions!
+
+
+In the examples I provided earlier, foo() was used as an example of a function call that is executed before the function declaration. This is possible because function declarations are hoisted to the top of their containing scope during the compilation phase, which means that they are available for use before their actual position in the code.
+
+In the case of foo(); in the example code I provided earlier, the JavaScript engine attempts to execute the function call before the foo() function is declared. However, because the function declaration is hoisted to the top of its containing scope during the compilation phase, the function is actually available for use at this point, even though it has not yet been declared in the code.
+
+
+So, moving the declaration to the top of the program or top of the defined scope is known as hoisting 
+due to which we can access the function before it has been declared , but the hoisting is not seen in case of the function expression !! Also , note that the variable declared with let and const keyword are having the block scope only due to which the scope is only accessible to the scope in which they are defined !! Also even tho one function scope is calling another function won't provide the variable to the called function !! So , below the third function don't have the accessibility of the variable 'c' ,even tho the third function is called inside the second function which have the 'c' variable !!
+
+exampe :
+
+  function second() {
+    const c='Hii';
+    third();
+  }
+  function third() {
+  const d='hey';
+  console.log(d+c+b+a);
+}
+*/
+
+
+
+// gloabal variable : variables which are not defined inside any function , are accessible through out the whole program !!
+
+
+//93 . Scoping in practice :
+
+function calAge(birthYear) {
+  const age = 2023 - birthYear;
+  console.log(firstName);
+  function printAge() {
+    const output =`${firstName} You're ${age} !! and your birthYear is ${birthYear}`
+    console.log(output);
+    if (age>25) {
+      function add(a,b) {
+        return a+b ;
+      }
+      console.log(add(10 , 20));
+    }
+    console.log( add(1,2));
+  }
+  printAge();
+  return age;
+}
+
+const firstName= 'Jonas'; // the firstName has the global scope which means the firstName is having the accessibilty through out the whole code !!
+calAge(1996);
+
+
+
+
+/*
+So you see that indeed,Jonas here was printed to the console,which is the first name variable.
+And so when this line of code [ console.log(firstName); ] was executed,JavaScript did not find this variable (firstName) in the scope.And so it did a variable lookup,where it looked up in the scope chain to see if it found the  (firstName) variable there.
+And indeed, the parent scope of the calcAge function is the global scope.And the firstName variable is in there,and therefore JavaScript could then use that.
+
+//  most important :
+
+Also , do note that the code inside the function only get called only when the function get called , so this is one of the reason why we can access the firstName before it has been declared !!,
+
+
+//  most important :
+
+Do note :
+
+the same is true for the birthYear variable,because for scoping , the parameter of a function
+work just like normal variables.And also remember that we said that the scope of a variable
+is the entire region of the code in which the variable is accessible, due to which we can use the parameter of the outer function inside the inner function too withour even passing them as a parameter.
+
+
+//  most most most most important :
+//  do note one more thing : 
+
+
+The function are also considered as the block scoped only when you use the stric mode !! example : the function add can only get called inside the if block in which it is defined and not outside it !! But if you remove the strict mode then in that case you can access the add function outside of the if block !!
+
+*/
+
+
+
+// 94.
+
+// Hoisting :
+
+
+const myName = 'Jonas';
+
+if (myName==='Jonas') {
+  // console.log(`Hey ${myName} and i am a ${job}`);
+  const job ='software engineer !!'
+}
+
+
+// (job) is a const defined variable , so it's scoped only to the if block in which it has been defined and also it is going be accessible starting from the line where it's defined. So , if we try to use the job variable before it's been defined then in that case it will give you an error !! So , we can say that the variable 'job' has the TDZ (temproal dedad zone ) that starts at the beginning of the if block scope  until the line where it is defined. i.e  [ const job ='software engineer !!' ]
+
+// basically each and everylet and const variable get their own Temporal Dead Zone that starts at the beginning of the scope until the line where it is defined. And the variable is only safe to use after the TDZ.
+
+/* 94 .
+
+What is hoisting in JavaScript? How does it work and what are the differences between variable types in relation to hoisting?
+
+Hoisting is a mechanism in JavaScript that allows certain types of variables to be accessed before they are declared in the code. This happens because during the creation phase of the execution context, the code is scanned for variable declarations, and for each variable found, a new property is created in a variable environment object. Hoisting does not work the same way for all variable types.
+
+Function declarations are hoisted, and the initial value in the variable environment is set to the actual function. This means that function declarations can be used before they are declared in the code. Variables declared with var are also hoisted, but when accessed before being declared, they return undefined. This can be a source of bugs in JavaScript. On the other hand, let and const variables are not hoisted in the same way, as their value is set to uninitialized and placed in a Temporal Dead Zone (TDZ). Attempts to use let and const variables before they are declared result in an error. Function expressions and arrow functions behave like variables in relation to hoisting. Functions created with var are hoisted to undefined, while those created with let or const are not usable before they are declared because of the TDZ.
+
+
+
+//  so , remember that the function declaration and var defined variable are hoisted also in case of the function declaration , the initial value is set to function initial value itself i.e during the hoisiting due to which we can access the function before it has been declared !!
+
+
+
+
+*/ 
+
+
+// examples :
+console.log(addNum(2, 3));
+
+function addNum(a, b) {
+  return a + b;
+}
+
+
+console.log(subFunc);    // as we know that the function expression defined with var are hoisted and set to undefined !! so , calling the undefined as a function will result in subFunc is not a function .
+// console.log(subFunc(5,2));
+
+ var subFunc =function myFuncToSub(a,b) {
+  return a-b ;
+}
+
+
+//  Also var defined variable becomes the property of the window object while let and const do not !!
+
+
+
+
+//96. 
+
+
+/*
+
+when we use arrow functions in JavaScript, they don't have their own "this" keyword. Instead, the "this" keyword in an arrow function will refer to the "this" keyword of the surrounding or parent function. This is because the arrow function picks up the "this" keyword from the outer or lexical scope of the function.
+
+For example, let's say we have a function that defines an object and then has a method using an arrow function like this:
+
+
+
+function myObject() {
+  this.myValue = 42;
+
+  this.myMethod = () => {
+    console.log(this.myValue);
+  };
+}
+
+
+Here, the arrow function myMethod doesn't have its own "this" keyword. Instead, when it's called, the "this" keyword will refer to the object that was created with the myObject function.
+
+This is called the "lexical this keyword" because it's determined by the lexical scope of the function, which is the set of variables and functions that are available to it. It's important to remember this property of arrow functions because it can affect how we write and use our code.
+
+
+
+
+// this keyword with the event listeners :
+
+
+
+When we use a function as an event listener in JavaScript, the "this" keyword inside that function will always refer to the DOM element that the listener is attached to.
+
+For example, let's say we have an HTML button element with an ID of "myButton". We can attach a click event listener to this button using JavaScript like this:
+
+
+
+
+const myButton = document.getElementById('myButton');
+
+myButton.addEventListener('click', function() {
+  console.log(this); // "this" refers to the "myButton" element
+});
+
+
+Here, when the button is clicked, the event listener function is called and the "this" keyword inside that function will refer to the "myButton" element.
+
+It's important to note that this behavior only applies when using regular functions as event listeners. If we were to use an arrow function instead, the "this" keyword would still refer to the parent function and not the DOM element.
+
+So, when working with event listeners in JavaScript, it's important to be aware of how the "this" keyword behaves so we can write our code accordingly.
+
+
+
+
+Note : that in case of the simple function if strict mode is there then this keyword will always  set to undefined , but if the mode isn't strict then in that case the simple function's this keyword will point to the window object !!
+
+
+
+
+/* 
+
+Notes:
+
+
+The 'this' keyword is important to understand in JavaScript.
+
+Beginners often find it difficult.
+
+The 'this' variable is created for every execution context and function.
+
+It is one of the three components of an execution context, along with the variable environment and scope chain.
+
+The value of the 'this' keyword is not static and depends on how the function is called.
+
+Four different ways of calling functions are discussed: as a method, as a normal function, with arrow functions, and as an event listener.
+
+The value of the 'this' keyword inside a method will point to the object on which the method is called.
+
+In strict mode, the 'this' keyword will be undefined when a function is called as a normal function.
+
+Arrow functions do not get their own 'this' keyword and instead use the 'this' keyword of the surrounding function.
+
+The 'this' keyword will point to the DOM element that the handler function is attached to when a function is called as an event listener.
+
+The 'this' keyword will never point to the function in which it is used or to the variable environment of the function.
+
+Other ways of calling functions using the 'this' keyword include using the new keyword or the call, apply, and bind methods.
+
+
+*/
+
+
+
+// example : this keyword used inside the function expression . 
+
+const calcMyAge = function (birthYear) {
+  console.log(2032-birthYear);
+  console.log(this);  // undefined if mode is strict , otherwise the this keyword will point to the window object!!
+}
+
+calcMyAge(1996);
+
+
+//  Also do note that calcMyAge do not have any owner object !!
+
+
+
+
+
+
+// 97.  
+
+
+/*
+
+Notes :
+
+
+Arrow functions do not have their own this keyword
+
+They use the lexical this keyword, which means they use the this keyword of their parent function or parent's scope
+
+In the global scope, the this keyword is window
+
+When an arrow function is used in a function, its this keyword points to the this keyword in the global scope
+
+In a normal function, the this keyword is undefined if it does not have its own this keyword
+
+In an arrow function, the this keyword is not the this keyword of the current function but the this keyword of its parent's scope, which can be the window object in the global scope.
+
+*/
+
+
+//  examples :
+
+console.log(this);  // window object
+
+
+//  function expression :
+
+const myFuncExp = function (birthYear) {
+  console.log(birthYear);
+  console.log(this);   // if mode is strict then this will hold 'undefined'  otherwise holds window object .
+}
+
+myFuncExp(1996);
+
+
+//  arrow function's this keyword :
+
+const myArrFunc = ()=>{
+  console.log(this);   // window
+}
+
+myArrFunc();
+
+
+
+//  this keyword in case of the objcets : the 'this' keyword will hold the refrence of the object calling the method !!
+
+
+//  examples :
+
+const myObject = {
+  year :1991,
+  calAge :function () {
+    console.log(this);
+    console.log(2037 -this.year);
+  }
+}
+
+myObject.calAge();
+
+const matilda ={
+  year :2017,
+}
+
+//  defining the calAge method in the matilda object too !!
+
+matilda.calAge = myObject.calAge
+
+matilda.calAge();   // output will be 20 , as the this keyword now hold the refrence of the matilda object in which the year is set to 2017 !!
+
+//  imp !!
+
+// note : while copying the method we do not call the calAge method below !!
+
+//  example :
+
+const f = matilda.calAge ;
+
+console.log(f);
+
+
+//  so , in the above case the this keywords will be undefined as the f just become tehe function expression !!
+
+
+//  most important :
+
+
+//  98 . Regular function vs arrow function's this keyword !!
+
+
+const jonas ={
+  firstName:'Jonas',
+  year:1991,
+  calAge :function () {
+    console.log(this);
+    console.log(this.year);
+  },
+  //  defining the arrow function below in the same object i.e jonas !!
+  greet: () => {
+    console.log(this);  // the this keyword here will hold the window object !!
+    console.log(this.firstName);  // due to which the firstName will always be undefined !!
+  }
+}
+
+
+jonas.greet();
+/*
+So you might think that, like this kind of block here i.e jonas object block,ought to create its own scope, but it doesn't.So this is not a code block. It is an object literal.So it's just a way that we literally define objects.So all the property and method in the jonas object is in the global scope still.And so therefore, that includes greet method.So ( greet method ) is in the global scope,and so therefore, the arrow function here (greet),which does not have its own this keyword,will use the this keyword from the global scope.And remember that is the window object.And so [ this.firstName ] will be set to undefined.
+
+
+
+
+//  so do remember that it is considered as a good practice to not use teh arrow function inside a particular object !! SO ,always use the regular function in order to create a method inside a particular object !! as shown below :
+
+*/
+
+const jonas1 ={
+  firstName:'Jonas',
+  year:1991,
+  calAge :function () {
+    console.log(this);
+    console.log(this.year);
+  },
+  //  defining the arrow function below in the same object i.e jonas !!
+  greet: function() {
+    console.log(this);  // the this keyword here will hold the window object !!
+    console.log(this.firstName);  // due to which the firstName will always be undefined !!
+  }
+}
+
+
+jonas1.greet();
+
+//  And now, one final example of a pitfall of this keyword is when we have a function inside of a method.
+
+const jonas2 ={
+  firstName:'Jonas',
+  year:1991,
+  calAge :function () {
+    console.log(this);
+    console.log(this.year);
+    const isMillienial = function () {
+      console.log(this.year >=1981 && this.year<=1961);
+    }
+    isMillienial();
+  },
+ 
+  greet: function() {
+    console.log(this);  
+    console.log(this.firstName);  
+  }
+}
+
+
+jonas2.calAge(); 
+
+//  the above function will show that the function inside the calAge i.e isMillienial will hold undefined for the this keyword !! bcoz the isMillienial is regular function call even tho it is inside a particular method i.e calAge !! And the rule says that inside a regular function call,which this clearly is, that this keyword must be undefined.And so therefore 'this' is undefined inside the isMillienial function .Now some people consider that this is a bug in JavaScript but in my opinion, it's not really.It's just how the this keyword works.It's a clear rule that a regular function (isMillienial) call has the this keyword set to undefined. And so that's just what is happening here.
+
+/*
+
+
+//  so to solve the above problem 
+
+*/
+
+const jonas3 ={
+  firstName:'Jonas',
+  year:1991,
+  calAge :function () {
+    console.log(this);
+    console.log(this.year);
+    const self = this ; // here the this keyword holds the jonas object , due to which , we get the access of the this keyword inside the isMillienial function  !!
+
+    //  do note that the 'self' is sometimes written as 'that' by the developers too !!
+    const isMillienial = function () {
+      console.log(self.year >=1981 && self.year<=1961);
+    }
+    isMillienial();
+  },
+ 
+  greet: function() {
+    console.log(this);  
+    console.log(this.firstName);  
+  }
+}
+
+
+jonas3.calAge(); 
+
+
+
+//  another way to tackle with this kind of error is to use the arrow function !! as the arrow function will use the this keyword of its parent scope and in this case it will be  the calAge method !!
+
+
+const jonas4 ={
+  firstName:'Jonas',
+  year:1991,
+  calAge :function () {
+    console.log(this);
+    console.log(this.year);
+    //  do remember one thing , i.e the arrow function inherits the this keyword from the parent scope  !!
+    const isMillienial = () =>{
+      console.log(self.year >=1981 && self.year<=1961);
+    }
+    isMillienial();
+  },
+ 
+  greet: function() {
+    console.log(this);  
+    console.log(this.firstName);  
+  }
+}
+
+
+jonas4.calAge(); 
+
+
+
+
+
+// most most most important line :
+
+
+//  do note that the argument object only exsist in the regular function expression and the function declaration , but not in the arrow function !!
+
+
+function myFuncDec(a, b) {
+  console.log(arguments);
+  return a + b;
+}
+
+myFuncDec(1,2,2,3,6,6,6);
+
+const myFUncExp = function myFuncExp(a, b) {
+  console.log(arguments);
+  return a + b;
+}
+
+myFUncExp(15,26,6,54);
+
+
+const myArrow = (a, b) => {
+  // console.log(arguments); this will throw the error !!
+  return a + b;
+}
+
+myArrow(12,5,6);
