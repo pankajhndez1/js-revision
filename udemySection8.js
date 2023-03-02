@@ -981,7 +981,7 @@ console.log(friend);
 };
  */
 
-
+//  which shows only refrence get copied and then it points to the same object !!
 
 /*
 
@@ -1033,3 +1033,42 @@ myString = "world"; // This would cause an error
 In this example, we declare a variable myString and assign it a string value. When we try to reassign myString to a new string value, we get an error because myString is declared with const and is therefore immutable.
 
 */
+
+
+
+// do note that the object made with const allows us to only make the changes in the object properties and not the whole object getting replaced with another object !!
+
+
+
+
+
+// most most most important !! :
+
+
+// object.assign method :
+
+const Jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'willias',
+  age: 27,
+  family: ['Alice', 'Bob']
+};
+
+const JessicaCopy = Object.assign({}, Jessica2);
+
+JessicaCopy.lastName ='Davis';
+
+console.log(Jessica2);
+console.log(JessicaCopy);
+
+
+JessicaCopy.family.push('Mary');
+JessicaCopy.family.push('John');
+
+//  most important note :
+
+//  note : although i have pushed the data in the family array of the JessicaCopy , but it is going to reflect in both the objects i.e JessicaCopy and  jessica and the reason behind it is that the family object is a deeply nested object.And so therefore, object.assign did not really,behind the scenes, copy it to the new object.So in essence, both the objects, Jessica2 and JessicaCopy have a property called family,which points at the same object in the memory heap,and that object is the family array. And so, when we change the array in one of them,it's also gonna be changed in the other one.
+
+console.log(Jessica2);
+console.log(JessicaCopy);
+
