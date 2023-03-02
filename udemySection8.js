@@ -900,6 +900,7 @@ jonas4.calAge();
 
 function myFuncDec(a, b) {
   console.log(arguments);
+  console.log(this,'this'); 
   return a + b;
 }
 
@@ -919,3 +920,116 @@ const myArrow = (a, b) => {
 }
 
 myArrow(12,5,6);
+
+
+
+// 99.  primitive vs refrence types !!
+
+// Note : refrence types are stored in the  memory heap and the primitive types are stored in the callStack .
+
+// in case of primitive types the value at a certain memory address is immutable,or in other words, it cannot be changed.
+
+
+// example :
+
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+// So, when we change the 'age' variable to 31 in that case a new piece of memory is allocated to the age variable . So memory address is created and the age variable now simply points to the new address after the reassigning ,due to which it is holding the new value of 31 .
+
+
+
+/*
+
+reference types :
+
+
+when we declare a variable as an object,an identifier is created,which points to a piece of memory in the stack,which in turn points to a piece of memory in the heap.And that is where the object is actually stored.And it works this way because objects might be too large to be stored in the stack.
+Instead they are stored in the heap,which is like an almost unlimited memory pool.And the stack just keeps a reference to where the object is actually stored in the heap so that it can find it whenever necessary.
+
+
+*/
+
+
+const me ={
+  name:'Jonas',
+  age:30,
+};
+
+const friend = me;
+friend.age =27 ;
+
+console.log(me);
+
+/*
+ o/p : {
+  name:'Jonas',
+  age:27,
+};
+ */
+
+console.log(friend);
+
+/*
+ o/p : {
+  name:'Jonas',
+  age:27,
+};
+ */
+
+
+
+/*
+
+in the above example :just like with primitive values,the Friend identifier will point
+to the exact same memory address as the Me identifier.And again, that address contains the reference,
+which then points to the object itself.And as the Friend object is now essentially the exact same as the Me object.
+
+
+
+
+as we change a property in the Friend object by setting friend.age to 27 ,so do note friend and me's identifier will point to the exact same memory address as the Me identifier due to which the heap, and the 30 is changed to 27. and the value then reflects 27 fro both the objects !!
+
+
+//  do note :
+
+it's a misconception that all variables declared with const are immutable.In fact, that is only true for primitive values not for the refrence type values !!
+
+
+
+example :
+
+
+ While variables declared with const are immutable in the sense that they cannot be reassigned to a new value, this does not mean that the value itself is necessarily immutable. This distinction is particularly important when dealing with reference values.
+
+A reference value is any value that is not a primitive value (i.e., not a string, number, boolean, null, or undefined). Instead, it is an object, array, or function. When you assign a reference value to a variable, the variable actually holds a reference to the memory location where the value is stored, rather than the value itself. This means that when you use a variable to access a reference value, you are actually accessing the value in memory by following the reference.
+
+When you declare a variable with const and assign a reference value to it, the const keyword only prevents you from reassigning the variable to a different reference value. However, you can still modify the underlying value that the variable references, as long as the value itself is mutable.
+
+Here's an example to illustrate this:
+
+
+const myArray = [1, 2, 3];
+myArray.push(4);
+console.log(myArray); // Output: [1, 2, 3, 4]
+
+
+
+In this example, we declare a variable myArray and assign it a reference to an array with three elements. We then use the push() method to add a fourth element to the array. Even though myArray is declared with const, we are still able to modify the array by adding an element to it.
+
+On the other hand, if we were to assign a primitive value to myArray, such as a string or number, then myArray would be truly immutable:
+
+
+
+const myString = "hello";
+myString = "world"; // This would cause an error
+
+
+
+In this example, we declare a variable myString and assign it a string value. When we try to reassign myString to a new string value, we get an error because myString is declared with const and is therefore immutable.
+
+*/
