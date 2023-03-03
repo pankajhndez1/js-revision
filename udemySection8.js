@@ -1072,3 +1072,76 @@ JessicaCopy.family.push('John');
 console.log(Jessica2);
 console.log(JessicaCopy);
 
+
+
+//  let see with the nested objects :
+
+const Jessica3 = {
+  firstName: 'Jessica',
+  lastName: 'willias',
+  age: 27,
+  family: {
+    name :'pankaj',
+    lastName:'kumar'
+  }
+};
+
+const JessicaCopy2 = Object.assign({}, Jessica3);
+
+JessicaCopy2.lastName ='Davis';
+
+console.log(Jessica3,'Jessica3');
+console.log(JessicaCopy2,'JessicaCopy2');
+
+JessicaCopy2.family.name='Raj' ;
+
+console.log(Jessica3,'Jessica3');
+console.log(JessicaCopy2,'JessicaCopy2');
+
+
+//  which shows that the object.assign method is not considered as a good method to copy the nested objects as when we change a particular property in the the copied object's nested object (family) then in that case the changes are going to get reflected in the main object too !!
+
+
+
+//  reason :
+
+/*
+
+
+Object.assign method is a shallow copy method, which means that it only creates a new object with the same properties as the original object, but the values of those properties that are objects themselves are still references to the original objects. Therefore, if you change a property in the nested object of the copied object, it will reflect the changes in the original object as well.
+
+
+For example, consider the following code:
+
+
+
+
+
+const person = {
+  name: "John",
+  age: 30,
+  family: {
+    mother: "Jane",
+    father: "Jack"
+  }
+};
+
+const copyPerson = Object.assign({}, person);
+
+copyPerson.family.mother = "Emily";
+
+console.log(person.family.mother); // Output: "Emily"
+
+
+
+
+In this code, we create an object person with a nested object family. We then create a copy of the person object using Object.assign method and modify the family.mother property in the copied object. But when we log the value of person.family.mother, we see that it has also changed to "Emily".
+
+To create a deep copy of an object with nested objects, you can use other methods such as the spread operator or libraries like lodash. These methods create a new object with all the properties and values of the original object, including the nested objects, without keeping the references to the original objects.
+
+
+
+
+
+
+*/
