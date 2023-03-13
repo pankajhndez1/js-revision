@@ -1,14 +1,14 @@
 //72 onward se pdna 
- 
 
-const myTable =document.getElementById('mytab');
 
-const tabCpation =myTable.caption ;
+const myTable = document.getElementById('mytab');
 
-console.log(tabCpation,"tabCpation");
-console.log(tabCpation.innerText,'tabCpation');
+const tabCpation = myTable.caption;
 
-tabCpation.innerText='new caption'
+console.log(tabCpation, "tabCpation");
+console.log(tabCpation.innerText, 'tabCpation');
+
+tabCpation.innerText = 'new caption'
 
 
 //  accessing the thead  of the table !!
@@ -20,14 +20,14 @@ console.log(myThead.tHead);
 
 
 //  manuplating the thead :
-console.log(myThead.tHead.innerHTML,'myThead.tHead.innerHTML');
-myThead.tHead.innerHTML ="<tr><th>Num</th><th>Name</th><th>subject</th></tr>"
+console.log(myThead.tHead.innerHTML, 'myThead.tHead.innerHTML');
+myThead.tHead.innerHTML = "<tr><th>Num</th><th>Name</th><th>subject</th></tr>"
 
 //  manuplating the tfoot :
 
-const myTfoot =document.getElementById('mytab').tFoot;
+const myTfoot = document.getElementById('mytab').tFoot;
 
-console.log(myTfoot,'myTfoot');
+console.log(myTfoot, 'myTfoot');
 myTfoot.innerHTML = "<tr><td>12</td><td>Raj</td><td>python</td></tr>"
 
 
@@ -38,7 +38,7 @@ myTfoot.innerHTML = "<tr><td>12</td><td>Raj</td><td>python</td></tr>"
 //  createCaption
 
 const tcap = myTable.createCaption();
-tcap.innerText ='my caption';
+tcap.innerText = 'my caption';
 
 // deleteCaption
 
@@ -50,10 +50,10 @@ myTable.deleteCaption();
 // createTHead :
 
 
-const myTheads =myTable.createTHead();
-console.log(myTheads,'myTheads');
+const myTheads = myTable.createTHead();
+console.log(myTheads, 'myTheads');
 console.log(myTheads.innerHTML);
-myTheads.innerHTML ="<tr><th>Number</th><th>Name</th><th>my subjects</th></tr>"
+myTheads.innerHTML = "<tr><th>Number</th><th>Name</th><th>my subjects</th></tr>"
 
 
 // deleteTHead :
@@ -66,10 +66,10 @@ console.log(myTheads);
 
 
 // 75. createTFoot and deleteTFoot Methods in JavaScript .
-const myData =myTable.createTFoot();
+const myData = myTable.createTFoot();
 console.log(myData);
-console.log( myData.innerHTML);
-myData.innerHTML ="<tr><td>123</td><td>pankaj jii</td><td>aws</td></tr>"
+console.log(myData.innerHTML);
+myData.innerHTML = "<tr><td>123</td><td>pankaj jii</td><td>aws</td></tr>"
 
 
 myTable.deleteTFoot();
@@ -96,23 +96,23 @@ myTableData.deleteRow(-1);
 
 
 //  inserting and deleting rows from a particular section :
- 
+
 const myBody = document.getElementById('tBody');
 
 
-console.log( myBody.rows);
-console.log( myBody.rows[0].innerHTML);
+console.log(myBody.rows);
+console.log(myBody.rows[0].innerHTML);
 // myBody.rows[0].insertCell().textContent ='hii'
 
 
 //  now adding a new row to the particular section of the table i.e inside the body  .
 
 
-const myTableBody =document.getElementById('tBody');
+const myTableBody = document.getElementById('tBody');
 
-const myNewRow= myTableBody.insertRow();
+const myNewRow = myTableBody.insertRow();
 
-myNewRow.insertCell().textContent ='hiiii'
+myNewRow.insertCell().textContent = 'hiiii'
 
 
 //  deleting the newly inserted row from tBody :
@@ -127,9 +127,9 @@ myTableBody.deleteRow(1);
 // do note that the row property do includes the row of the thead too !! so , all the rows of the tables are considered when using the rows property  !!
 
 
-console.log( myTableData,'myTableData');
+console.log(myTableData, 'myTableData');
 
-console.log( myTableData.rows,' myTableData.rows');
+console.log(myTableData.rows, ' myTableData.rows');
 //  to get all the cells of a particular row :
 console.log(myTableData.rows[0].cells);
 
@@ -141,12 +141,12 @@ console.log(myTableData.rows[0].cells.length);
 // inserting  a new thead cell at the last :
 
 console.log(myTableData.rows[0].cells);
-myTableData.rows[0].insertCell().innerHTML ='<th>Fav color</th>';
-console.log( myTableData.rows[0].cells);
+myTableData.rows[0].insertCell().innerHTML = '<th>Fav color</th>';
+console.log(myTableData.rows[0].cells);
 
-const lastDataOnRow1 =myTableData.rows[1].insertCell();
+const lastDataOnRow1 = myTableData.rows[1].insertCell();
 
-lastDataOnRow1.innerText ='Red';
+lastDataOnRow1.innerText = 'Red';
 
 
 // 79.  textContent :
@@ -164,7 +164,8 @@ function myFunc1() {
     alert('i  got clicked and i am myFunc1 ')
 }
 function myFunc2() {
-    alert('i  got clicked and i am myFunc2 ')}
+    alert('i  got clicked and i am myFunc2 ')
+}
 document.getElementById('myButton').addEventListener('click', myFunc1)
 document.getElementById('myButton').addEventListener('click', myFunc2)
 
@@ -172,36 +173,36 @@ document.getElementById('myButton').addEventListener('click', myFunc2)
 
 //  now removing the event listener i.e myFunc2
 
-document.getElementById('myButton').removeEventListener('click',myFunc1)
+document.getElementById('myButton').removeEventListener('click', myFunc1)
 
 
 
 // 91 . target and currentTarget :
 
 //  bubble phase :
-document.getElementById('one').addEventListener('click',function myFunc1(e) {
-    console.log('target',e.target.dataset.name);
-    console.log('currentTarget',e.currentTarget.dataset.name);
+document.getElementById('one').addEventListener('click', function myFunc1(e) {
+    console.log('target', e.target.dataset.name);
+    console.log('currentTarget', e.currentTarget.dataset.name);
     console.log('1');
-},false);
+}, false);
 
-document.getElementById('two').addEventListener('click',function myFunc2(e) {
-    console.log('target',e.target.dataset.name);
-    console.log('currentTarget',e.currentTarget.dataset.name);
+document.getElementById('two').addEventListener('click', function myFunc2(e) {
+    console.log('target', e.target.dataset.name);
+    console.log('currentTarget', e.currentTarget.dataset.name);
     console.log('2');
-},false)
+}, false)
 
-document.getElementById('three').addEventListener('click',function myFunc3(e) {
-    console.log('target',e.target.dataset.name);
-    console.log('currentTarget',e.currentTarget.dataset.name);
+document.getElementById('three').addEventListener('click', function myFunc3(e) {
+    console.log('target', e.target.dataset.name);
+    console.log('currentTarget', e.currentTarget.dataset.name);
     console.log('3');
-},false)
+}, false)
 
-document.getElementById('four').addEventListener('click',function myFunc4(e) {
-    console.log('target',e.target.dataset.name);
-    console.log('currentTarget',e.currentTarget.dataset.name);
+document.getElementById('four').addEventListener('click', function myFunc4(e) {
+    console.log('target', e.target.dataset.name);
+    console.log('currentTarget', e.currentTarget.dataset.name);
     console.log('4');
-},false)
+}, false)
 
 
 // 92.  stopPropagation and   stopImmediatePropagation 
@@ -236,23 +237,23 @@ function func1(e) {
 
 
 // boolean false is used for the bubble phase
-myAnchor.addEventListener('click',func1,false);
+myAnchor.addEventListener('click', func1, false);
 
 myDiv.addEventListener('click', function (e) {
     this.style.backgroundColor = 'red';
-},false);
+}, false);
 
 // 94. Mouse event in js :
 
 //note : event like  click , mousedown ,contextmenu ,mousemove and mouseup event bubbleup !! whereas mouseeneter and mouseleave doesn't bubble up !!
 //  remember bubble up means firing the parent's events too ,but note that, it is not necessary for both elements to have the same event types in order for the event to "bubble up" from the child to the parent elements.
-document.getElementById('ones').addEventListener('mousedown',function (e) {
-    console.log(e.type,'event type bubble');
-},false);
+document.getElementById('ones').addEventListener('mousedown', function (e) {
+    console.log(e.type, 'event type bubble');
+}, false);
 
-document.getElementById('fours').addEventListener('click',function (e) {
-    console.log(e.type,'event type');
-},false);
+document.getElementById('fours').addEventListener('click', function (e) {
+    console.log(e.type, 'event type');
+}, false);
 
 
 // 95. key events in js :
@@ -300,7 +301,7 @@ myInput.addEventListener('blur', function (e) {
 // History object in js 
 
 
-console.log( window.history.length,' window.history.length');
+console.log(window.history.length, ' window.history.length');
 
 
 // window.history.back();
@@ -315,7 +316,7 @@ console.log( window.history.length,' window.history.length');
 // 108 . setTimeout and clearTimeout Methods 
 
 
-const retVal=setTimeout((e) => {
+const retVal = setTimeout((e) => {
     document.getElementById('myPara').style.color = 'red';
 }, 5000);
 
@@ -326,7 +327,7 @@ function myClearTimeOut() {
     clearTimeout(retVal)
 }
 
-document.getElementById('myBtn').addEventListener("click",myClearTimeOut)
+document.getElementById('myBtn').addEventListener("click", myClearTimeOut)
 
 
 
@@ -347,18 +348,18 @@ document.getElementById('myBtn').addEventListener("click",myClearTimeOut)
 
 // 112. accessing the forms
 
-console.log( document.forms,' document.forms');
+console.log(document.forms, ' document.forms');
 
-const myFormData =document.forms['myForm'];
+const myFormData = document.forms['myForm'];
 
-console.log(myFormData,'myFormData');
+console.log(myFormData, 'myFormData');
 
 
 // 113. accessing form fields
 
 //  example :
 
-const mysData =document.yForm.elements['y_username'];
+const mysData = document.yForm.elements['y_username'];
 
 // console.log(mysData);
 // console.log(mysData.name);
@@ -369,7 +370,7 @@ const mysData =document.yForm.elements['y_username'];
 
 const myHandlerForForm = document.getElementById('clickSubmit');
 mysData.addEventListener('change', (e) => {
-    console.log(e.target.value,'e.target.value');
+    console.log(e.target.value, 'e.target.value');
 })
 myHandlerForForm.addEventListener('click', function (e) {
     const mySubmittedData = mysData.value
@@ -383,15 +384,15 @@ myHandlerForForm.addEventListener('click', function (e) {
 const myVali = document.fForm.f_username;
 console.log(myVali);
 
-let regexPattern =  /^[^\d\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
+let regexPattern = /^[^\d\s!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/;
 function validateData(data) {
     if (regexPattern.test(data)) {
-        document.getElementById('spaan').textContent ='valid'
+        document.getElementById('spaan').textContent = 'valid'
     } else {
-        document.getElementById('spaan').textContent ='inValid'
+        document.getElementById('spaan').textContent = 'inValid'
     }
 }
-myVali.addEventListener('change',function (e) {
+myVali.addEventListener('change', function (e) {
     console.log(e.target.value);
     validateData(e.target.value);
 })
@@ -409,14 +410,14 @@ console.log(document.cookie);
 
 // 119. persistent cookies :
 
-document.cookie ='house = #256 itbp campus sector 32 c chandigarh ; expires =Mon ,12-sep -2023 09:00:00 UTC' ;
+document.cookie = 'house = #256 itbp campus sector 32 c chandigarh ; expires =Mon ,12-sep -2023 09:00:00 UTC';
 
 console.log(document.cookie);
 
 //121. se pdna
 
 document.cookie = 'username=orange';
-document.cookie ='id=banana';
+document.cookie = 'id=banana';
 
 
 //  the above data will get appended with each other !!
@@ -479,21 +480,21 @@ localStorage.clear();
 
 // 127 . sessionStorage : the data only gets removed from the system when we close the current window on chrome.
 
-sessionStorage.setItem('otp',5693);
+sessionStorage.setItem('otp', 5693);
 
 
 //  note even if we comment the above code i.e sessionStorage.setItem('otp',5693); and re load the page even then sessionStorage is going to persist there !! but note if we comment the code i.e i.e sessionStorage.setItem('otp',5693); and close the current opened browser then the sessionStorage is not going to get last !!
 
 
-sessionStorage.setItem('mail','raja@gmail.com');
+sessionStorage.setItem('mail', 'raja@gmail.com');
 
 //  now in order to get the itme from the sessionStorage then :
 
-console.log( sessionStorage.getItem('otp'));
+console.log(sessionStorage.getItem('otp'));
 
 // now using the key property to get a particular item's key :
 
-console.log( sessionStorage.key(0));
+console.log(sessionStorage.key(0));
 
 
 //  now in order to remove a particular item from the sessionStorage then :
@@ -544,17 +545,17 @@ finally {
 //  there is another way to deal with the execptions  ,is to ( throw ) the excetion once it gets generated in the try block, and in such cases , the catch will run even if we use the throw  statement !! Also do note the error message provided in the throw statement will be used by the catch block to provide context and information about the exception that was generated.
 
 
-function myFunc(a,b) {
-    if (isNaN(a)||isNaN(b)) {
+function myFunc(a, b) {
+    if (isNaN(a) || isNaN(b)) {
         throw 'one of the parameter is not a number !!';
     }
 }
 
 try {
-   myFunc('a',12); 
-} 
+    myFunc('a', 12);
+}
 catch (error) {
-    console.log(error,'xxxxxxxxxxx message xxxxxxxxxxx');
+    console.log(error, 'xxxxxxxxxxx message xxxxxxxxxxx');
 }
 
 
@@ -568,4 +569,23 @@ So, in summary, using throw does not prevent the catch block from running. Inste
 */
 
 
-//129. strcimode :
+//129. strictmode :
+
+"use strict";
+
+function myFuncInStrictMode(a, b, b) {
+    console.log(a + b + b);
+}
+
+myFuncInStrictMode(15, 6, 9)
+
+
+//  the above code will throw under the strict mode that the duplicate parameters are not allowed !!
+
+
+
+//  anonymous arrow 
+
+
+const myArr = a => console.log(12 + a);
+myArr(15);
