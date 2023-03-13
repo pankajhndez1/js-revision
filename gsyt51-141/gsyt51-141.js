@@ -584,8 +584,28 @@ myFuncInStrictMode(15, 6, 9)
 
 
 
-//  anonymous arrow 
+// synchronous function : it completes the whole execution and only then it moves forward !!
 
 
 const myArr = a => console.log(12 + a);
 myArr(15);
+
+function myFuncGeek(callback, num) {
+    callback(num);
+}
+
+myFuncGeek(a => { console.log('hii there ' + a) }, 55)
+
+
+// Asynchronous function : An asynchronous function is one that allows the code to continue to execute while it is running. Instead of blocking the execution of the code, an asynchronous function will execute in the background and notify the code when it is done through a callback, promise, or async/await syntax . Example : setTimeout function .
+
+setTimeout(function () {
+    console.log('hii i am setTimeout function');
+}, 5000);
+
+console.log('this code will get executed first in comparsion to the code written inside the setTimeout function ');
+
+
+// 132 . Array destructuring :
+
+
