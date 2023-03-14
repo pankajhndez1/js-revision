@@ -606,6 +606,146 @@ setTimeout(function () {
 console.log('this code will get executed first in comparsion to the code written inside the setTimeout function ');
 
 
+// 132 . map Method in JavaScript 
+
+
+const myArray = [10, 20, 30, 40, 50];
+
+const newArr = myArray.map((value, i, arr) => {
+    console.log(value, 'is the value');
+    console.log(i, 'is the i');
+    console.log(arr, 'is the arr');
+    return (value * i)
+});
+
+console.log(newArr, 'newArr');
+
+
+
 // 132 . Array destructuring :
 
 
+const myArray2 =['pankaj',56,'#128/6 itbp campus sector 32 ' ,8264672672];
+
+const [names,roll,address,phone]=myArray2;
+
+console.log(names);
+
+
+
+// also do note that the destructuring occurs according to the index position !!
+
+
+//  example :
+
+const myArray3 = ['x', 'y', 'z', 'chandigarh', 569, 'jkl colony'];
+
+const [alpha1, , alpha3, state, num, addresss] = myArray3;
+
+console.log(alpha3);
+
+const myArray4 =[15,26,699];
+
+function myArrReturingFunc(arr) {
+    return arr ;
+}
+
+const [num1,num2,num3]= myArrReturingFunc(myArray4);
+
+console.log(num1);
+
+
+//  desturcturing the nested arrays :
+
+const [data1, [data2,data3]] = ['hii', ['hey', 'hello']];
+
+console.log(data1, ' data1');
+console.log(data2, ' data2');
+
+
+//133 .object destructuring !!
+
+const myObj = {
+    courseName: 'javascript',
+    duration: '6 months',
+    tutor: 'pankaj kumar',
+}
+
+// now destructuring :
+const {courseName :cname,duration,tutor}=myObj;
+
+// note : courseName :cname means that the courseName now will be known by cname !!
+
+console.log(cname);
+
+
+//  do note if we want to declare the variable first and then want to destructure then in that case we can do so using the below approach :
+
+let a, b;
+({ a, b } = { a: 10, b: 20 })
+console.log(a, b, 'a,b');
+
+
+
+// also , do note if an object does not have particular key even we can further use it using the initial values.
+
+//  example :
+
+const { ax, bx = 10 } = { ax: 50 };
+
+console.log(ax,bx,'ax,bx');
+
+
+//  do note that while destructuring we can change the name of the keys too :
+
+const {key1:myKey=45 ,key2}= {key1:'563',key2:5666};
+
+console.log(myKey,key2,'myKey,key2');
+
+
+
+//  imp topic :
+
+// mostly used in framework i.e object destructuring in a function :
+
+//  object destructuring in a function :
+
+
+function myFuncShow({ courseName :cname, duration, tutor, house }) {
+    console.log(cname, duration, tutor, house, 'courseName,duration,tutor,house');
+}
+
+myFuncShow({ courseName: 'JS', duration: '6 months', tutor: 'Geek for Geeks', house: '#128/6' })
+
+
+// destructuring the object retured by the function :
+
+function funcObj(obj1, obj2) {
+    const newObj = { ...obj1, ...obj2 };
+    console.log(newObj, 'newObj');
+    return newObj;
+}
+
+
+const myReturnedObj =funcObj({ name: 'pankaj', lastName: 'kumar', age: 26 }, { roll: 56, house: '#156/66',lastName:'Raj' })
+
+console.log(myReturnedObj,'myReturnedObj');
+
+
+//  nested object destructuring :
+
+
+const myNestedObj = {
+    name: 'Raja jii',
+    age: 93,
+    about: {
+        wife: 3,
+        children: 8,
+        nameOfWife: 'xyz'
+    },
+}
+
+const {name ,age ,about:{wife,children,nameOfWife}}=myNestedObj;
+
+console.log(wife,"wife");
+console.log(children,'children');
