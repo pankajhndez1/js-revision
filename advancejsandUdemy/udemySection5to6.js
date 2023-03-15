@@ -133,10 +133,10 @@ document.querySelector('.myClass').addEventListener('click', function () {
 });
 
 
-// note : the while adding the eventListener to the particular element all we need to do is pass the the event ( ex :click) and the then the handler which will be listening to the click event and will be executing a particular set line of code , i.e function .
+// note : the while adding the eventListener to the particular element all we need to do is pass the  event ( ex :click) and the then the handler which will be listening to the click event and that handler will be executing a particular set line of code , i.e function .
 
 
-//  Also note , we passed function directly here into the addEventListener method.So as the first argument,we had the name of the event that we're listening for,which is a click.And then as the second argument,we have this function value.And this function simply contains the code that we want to execute whenever the event happens.Also, note that we do not call this function here anywhere !!, We simply define the function here,and then pass it into the event handler.But it is the JavaScript engine who will call this function as soon as the event happens.
+//  Also note , we passed function directly here into the addEventListener method. So as the first argument,we had the name of the event that we're listening for , example 'click'. And then as the second argument,we have this function value.And this function simply contains the code that we want to execute whenever the click event happens.Also, note that we do not call this function inside the addEventListener anywhere !!, We simply define the function there,and then pass it into the event handler.But it is the JavaScript engine who will call this function as soon as the event happens  ('click').
 
 
 // So note again, this function which we have passed in the addEventListener() will not be called immediately once the script here is executed.This function will only be called as soon as the event happens.
@@ -160,7 +160,7 @@ for (let i = 0; i < myArray1.length; i++)
 
 // you might have noticed that we didn't even use the curly braces to define a block that should be executed for the particular iterations .
 // And that's because just like an if else statement,if there is only one line of code
-// that I want to execute, then I actually don't have to create this block using {}, we can just write one line after the for loop.And then that's the one that will be iterated over and over again .
+// that we want to execute, then we actually don't have to create this block using {}, we can just write one line after the for loop.And then that's the one that will be iterated over and over again .
 
 
 
@@ -218,7 +218,7 @@ document.addEventListener('keydown', function (e) {
     }
 })
 
-//  so remember We do not call the function inside the addEventListener method , we only define it there. So we just explained the JS engine that Hey, JavaScript engine call the anonymous function (2nd parameter) when a keydown event happens.And when you do so please pass in the event object as an argument.
+//  so remember We do not call the function inside the addEventListener method , we only define it there. So the JS engine that will react on the occurence of the event ('keydown') in the following way : i.e the js engine would say Hey, JavaScript engine call the anonymous function (2nd parameter) when a keydown event happens. And when you do so please pass in the event object as an argument.
 
 
 //  Also note : in order to check if our element do contains a particular class then we can use the below defined method :

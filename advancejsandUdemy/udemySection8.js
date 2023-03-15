@@ -182,6 +182,8 @@ function repeat(fn, n) {
 
 // Note :  many people still think that JavaScript is an interpreted language but that's not really true anymore. So instead of simple interpretation modern JavaScript engine now use a mix between compilation and interpretation which is called just-in-time compilation. This approach basically compiles the entire code into machine code at once and then executes it right away. So we still have the two steps of regular ahead of time compilation but there is no portable file to execute (like in case of the compilation where the code is then transferred to the binary file to get used !!).And the execution happens immediately after a compilation. And this is perfect for JavaScript as it's really a lot faster than just executing code line by line.
 
+//  more explanation :
+
 // As a piece of JavaScript code enters the engine, the first step is to parse the code, which essentially means to read the code.
 
 // During the parsing process, the code is parsed into a data structure called the ( abstract syntax tree ) or AST.
@@ -215,7 +217,7 @@ function repeat(fn, n) {
 
 
 
-// note : const and let variables are block scoped. So they are valid.So they are available only inside the block in which they were created . Example : if block .
+// note : const and let variables are block scoped. So they are valid inside the block in which they were created . Example : if block .
 
 
 //  Also , note that the var variable are the function scoped and they do not care about the block scope .
@@ -250,7 +252,7 @@ const momName ='sarita devi';
 
 
 
-//  note note note : the scope chain is all about the order in which functions are written in the code.But what's really important to note here is that the scope chain has nothing to do with the order in which functions were called.Or in other words, the scope chain has nothing to dowith the order of the execution contexts in the call stack.The order of function calls is not relevantto the scope chain at all, all right?Really keep that in mind.
+//  note note note : the scope chain is all about the order in which functions are written in the code.But what's really important to note here is that the scope chain has nothing to do with the order in which functions were called.Or in other words, the scope chain has nothing to do with the order of the execution contexts in the call stack.The order of function calls is not relevant to the scope chain at all, all right?Really keep that in mind.
 
 
 // const a ='Jonas';
@@ -1058,8 +1060,8 @@ const JessicaCopy = Object.assign({}, Jessica2);
 
 JessicaCopy.lastName ='Davis';
 
-console.log(Jessica2);
-console.log(JessicaCopy);
+console.log(Jessica2,'Jessica2');
+console.log(JessicaCopy,'JessicaCopy');
 
 
 JessicaCopy.family.push('Mary');
