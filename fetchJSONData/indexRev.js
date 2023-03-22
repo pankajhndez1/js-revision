@@ -1,14 +1,17 @@
-// console.log('start');
-// function fetchNames(name) {
-//     setTimeout(() => {
-//         console.log('inside setTimeout');
-//         return name;
-//     }, 2000)
-// }
+//      JUST FOR THE REVISION :
 
-// const nm = fetchNames('pankaj');
-// console.log(nm, 'nm');
-// console.log('end');
+
+console.log('start');
+function fetchNames(name) {
+    setTimeout(() => {
+        console.log('inside setTimeout');
+        return name;
+    }, 2000)
+}
+
+const nm = fetchNames('pankaj');
+console.log(nm, 'nm');
+console.log('end');
 
 //  so , in order to tackle the problem of undefined we use the callback functions !!
 
